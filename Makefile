@@ -6,45 +6,56 @@
 #    By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 15:42:20 by tmina-ni          #+#    #+#              #
-#    Updated: 2023/06/13 07:08:47 by tmina-ni         ###   ########.fr        #
+#    Updated: 2023/06/13 15:04:11 by tmina-ni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#compilation
+#---------------FLAGS--------------------#
+
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+MAKE_NO_PRINT = $(MAKE) --no-print-directory
 
-#printf files
+
+#------------PATH VARIABLES--------------#
+
+LIBFT_PATH = ./libft/
+SRC_PATH = ./src/
+HEADER_PATH = ./include/
+
+
+#----------------FILES-------------------#
+
 NAME = libftprintf.a
-SRC = $(wildcard=*.c)
+SRC = $(wildcard $(SRC_PATH)*.c)
 OBJ = $(SRC:.c=.o)
+HEADER = $(wildcard $(HEADER_PATH)*.h)
 
-LIBFT_PATH = ./libft
 
-all: libft.a $(NAME)
+#----------------RULES-------------------#
 
-#generate libft
-libft.a: 
-	cd $(LIB_PATH) && make
+all: libft $(NAME)
 
-://web.mit.edu/gnu/doc/html/make_9.html
-https://makori-mildred.medium.com/how-to-create-static-library-in-c-and-how-to-use-it-b8b3e1fde999
-https://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/
-https://www.gnu.org/software/make/manual/html_node/Recursion.html
-#generate lib for printf
-#make knows that the rule needs to be executed if any of those files change
+#generate libf
+libft:
+	cd $(LIBFT_PATH) && $(MAKE_NO_PRINT)
+
+#rows rule needs to be executed if any of those .o files change
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJS)
 
-%.o: %.c
+#object files depend on c files and header file
+%.o: %.c $(HEADER_PATH)*.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f *.o
+	rm -f $(SRC_PATH)*.o
+	cd $(LIBFT_PATH) && $(MAKE_NO_PRINT) clean
 
 fclean: clean
 	rm -f $(NAME)
+	cd $(LIBFT_PATH) && $(MAKE_NO_PRINT) fclean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all libft clean fclean re

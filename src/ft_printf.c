@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/12 17:34:34 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/12 17:42:12 by tmina-ni         ###   ########.fr       */
+/*   Created: 2023/06/13 15:11:48 by tmina-ni          #+#    #+#             */
+/*   Updated: 2023/06/13 15:37:29 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../include/ft_printf.h"
 
-#include <stdio.h> //original printf
-#include <unistd.h> //write
-#include <stdlib.h> //malloc free
-#include "./libft/libft.h" //my libft
+int	ft_printf(const char *, ...)
+{
+	va_list	args;
+	va_list(args)
 
-int	ft_printf(const char *, ...);
-
-#endif
+}
