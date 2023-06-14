@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:11:48 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/14 12:50:55 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2023/06/14 15:41:06 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_printf(const char *str, ...)
 {
-	va_list	args;
+//	va_list	args;
 	int	i;
 	int	len;
 
@@ -22,10 +22,20 @@ int	ft_printf(const char *str, ...)
 	len = 0;
 	while (str[i])
 	{
-		if (str[i] != '%')
+		if (str[i] == '%')
+		{
+			i++;
+			if (str[i] == '%')
+			{
+				i++;
+				len++;
+			}
+		}
+		else
+		{
+			i++;
 			len++;
-		i++;
+		}
 	}
-	ft_strlen(str)
-	return (0);
+	return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:34:34 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/13 15:51:02 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2023/06/14 16:11:48 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@
 #include <stdarg.h> //va_start, va_arg, va_copy, va_end 
 #include "../libft/libft.h" //my libft
 
-int	ft_printf(const char *, ...);
+int	ft_printf(const char *str, ...);
 
 #endif
