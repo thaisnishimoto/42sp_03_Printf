@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:00:56 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/14 16:10:14 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2023/06/15 17:03:36 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@
 
 MU_TEST(funtion_should_print_letter_a)
 {
-	int	len;
-	char	c;
+//	char	c;
 //	char	*result = NULL;
 //	char    *expected[] = {"1st line.\n", "2nd line.\n"};
 
-	c = 'a';
+//	c = 'a';
 	printf("\n----------------------\n");
 	printf(" TEST 1: print single char");
 	printf("\n----------------------\n");
-	len = ft_printf("Imprimir: %c", c);
-	printf("%d\n", len);
+	ft_printf("teste 1: %d", 5);
+//	ft_printf("teste 2: %d %f");
+//	ft_printf("teste 1: %%d %f");
 }
 
 MU_TEST_SUITE(test_suite)

@@ -6,7 +6,7 @@
 #    By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 15:42:20 by tmina-ni          #+#    #+#              #
-#    Updated: 2023/06/13 15:04:11 by tmina-ni         ###   ########.fr        #
+#    Updated: 2023/06/15 15:02:27 by tmina-ni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,13 +40,17 @@ all: libft $(NAME)
 libft:
 	cd $(LIBFT_PATH) && $(MAKE_NO_PRINT)
 
-#rows rule needs to be executed if any of those .o files change
+#rule needs to be executed if any of those .o files change
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJS)
+	ar rcs $(NAME) $(OBJ)
 
 #object files depend on c files and header file
 %.o: %.c $(HEADER_PATH)*.h
 	$(CC) $(CFLAGS) -c $< -o $@
+
+#object files depend on c files and header file
+main: all
+	$(MAKE_NO_PRINT) -C ./teste
 
 clean:
 	rm -f $(SRC_PATH)*.o
