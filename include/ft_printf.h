@@ -24,5 +24,6 @@ int	ft_printlen(const char *str);
 int	ft_print_char(va_list args);
 int	ft_print_str(va_list args);
 int	ft_print_nbr(va_list args);
+int	ft_printnbr_base16(va_list args);
 
 #endif

@@ -72,32 +72,26 @@ int	ft_print_nbr(va_list args)
 	return (len);
 }
 
-void	ft_putnbr_base(int nbr, char *base)
+int	ft_printnbr_base16(va_list args)
 {
-	long		lnbr;
-	int			blen;
-	char		digits[100];
-	int			i;
+	char	*base;
+	char	num[100];
+	unsigned int		nbr;
+	int		len;
+	int		i;
 
-	lnbr = nbr;
-	blen = check_one(base);
-	check_two(base);
-	if (blen < 2)
-		return ;
-	if (lnbr == 0)
+	base = "0123456789abcdef";
+	nbr = va_arg(args, int);
+	if (nbr == 0)
 		write(1, "0", 1);
-	if (lnbr < 0)
-	{
-		lnbr = -lnbr;
-		write(1, "-", 1);
-	}
 	i = 0;
-	while (lnbr > 0)
+	while (nbr > 0)
 	{
-		digits[i++] = base[lnbr % blen];
-		lnbr = lnbr / blen;
+		num[i++] = base[nbr % 16];
+		nbr = nbr / 16;
 	}
+	len = i;
 	while (--i >= 0)
-		write(1, &digits[i], 1);
+		write(1, &num[i], 1);
+	return (len);
 }
-

@@ -63,6 +63,8 @@ int	ft_printf(const char *str, ...)
 				len += ft_print_str(args);
 			else if (str[i] == 'd' || str[i] == 'i')
 				len += ft_print_nbr(args);
+			else if (str[i] == 'x' || str[i] == 'X')
+				len += ft_printnbr_base16(args);
 		}
 		i++;
 	}

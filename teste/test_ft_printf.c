@@ -54,39 +54,136 @@ MU_TEST(funtion_should_print_string)
 MU_TEST(funtion_should_print_int)
 {
 	int	num;
-	int	result3;
-	int	expected3;
+	int	result1;
+	int	expected1;
+	int	result2;
+	int	expected2;
 
 	num = 100;
 	printf("\n-------------------------\n");
 	printf("TEST 3: print number\n");
 	printf("-------------------------\n");
-	printf("*Expected\n");
-	expected3 = printf("%d\n", num);
+	printf("*Expected %%d\n");
+	expected1 = printf("%d\n", num);
 	printf("*Result ft_printf\n");
-	result3 = ft_printf("%d\n", num);
+	result1 = ft_printf("%d\n", num);
 	printf("\n");
+	mu_assert_int_eq(expected1, result1);
 	
-	mu_assert_int_eq(expected3, result3);
+	printf("*Expected %%i\n");
+	expected2 = printf("%i\n", num);
+	printf("*Result ft_printf\n");
+	result2 = ft_printf("%i\n", num);
+	printf("\n");
+	mu_assert_int_eq(expected2, result2);
 }
 
 MU_TEST(funtion_should_print_negative_int)
 {
 	int	num;
-	int	result3;
-	int	expected3;
+	int	result1;
+	int	expected1;
+	int	result2;
+	int	expected2;
 
 	num = -42;
 	printf("\n-------------------------\n");
-	printf("TEST 4: print number\n");
+	printf("TEST 4: print neg number\n");
 	printf("-------------------------\n");
-	printf("*Expected\n");
-	expected3 = printf("%d\n", num);
+	printf("*Expected %%d\n");
+	expected1 = printf("%d\n", num);
 	printf("*Result ft_printf\n");
-	result3 = ft_printf("%d\n", num);
+	result1 = ft_printf("%d\n", num);
 	printf("\n");
+	mu_assert_int_eq(expected1, result1);
 	
-	mu_assert_int_eq(expected3, result3);
+	printf("*Expected %%i\n");
+	expected2 = printf("%i\n", num);
+	printf("*Result ft_printf\n");
+	result2 = ft_printf("%i\n", num);
+	printf("\n");
+	mu_assert_int_eq(expected2, result2);
+}
+
+MU_TEST(funtion_should_print_zero)
+{
+	int	num;
+	int	result1;
+	int	expected1;
+	int	result2;
+	int	expected2;
+
+	num = 0;
+	printf("\n-------------------------\n");
+	printf("TEST 5: print number %%i\n");
+	printf("-------------------------\n");
+	printf("*Expected %%d\n");
+	expected1 = printf("%d\n", num);
+	printf("*Result ft_printf\n");
+	result1 = ft_printf("%d\n", num);
+	printf("\n");
+	mu_assert_int_eq(expected1, result1);
+	
+	printf("*Expected %%i\n");
+	expected2 = printf("%i\n", num);
+	printf("*Result ft_printf\n");
+	result2 = ft_printf("%i\n", num);
+	printf("\n");
+	mu_assert_int_eq(expected2, result2);
+}
+
+MU_TEST(funtion_should_print_hexadecimal)
+{
+	int	num;
+	int	result1;
+	int	expected1;
+	int	result2;
+	int	expected2;
+
+	num = 42;
+	printf("\n-------------------------\n");
+	printf("TEST 6: print 42 base 16\n");
+	printf("-------------------------\n");
+	printf("*Expected lower %%x\n");
+	expected1 = printf("%x\n", num);
+	printf("*Result ft_printf\n");
+	result1 = ft_printf("%x\n", num);
+	printf("\n");
+	mu_assert_int_eq(expected1, result1);
+	
+	printf("*Expected UPPER %%X\n");
+	expected2 = printf("%X\n", num);
+	printf("*Result ft_printf\n");
+	result2 = ft_printf("%X\n", num);
+	printf("\n");
+	mu_assert_int_eq(expected2, result2);
+}
+
+MU_TEST(funtion_should_print_negative_hexadecimal)
+{
+	int	num;
+	int	result1;
+	int	expected1;
+	int	result2;
+	int	expected2;
+
+	num = -1000;
+	printf("\n-------------------------\n");
+	printf("TEST 7: print -1000 base 16\n");
+	printf("-------------------------\n");
+	printf("*Expected lower %%x\n");
+	expected1 = printf("%x\n", num);
+	printf("*Result ft_printf\n");
+	result1 = ft_printf("%x\n", num);
+	printf("\n");
+	mu_assert_int_eq(expected1, result1);
+	
+	printf("*Expected UPPER %%X\n");
+	expected2 = printf("%X\n", num);
+	printf("*Result ft_printf\n");
+	result2 = ft_printf("%X\n", num);
+	printf("\n");
+	mu_assert_int_eq(expected2, result2);
 }
 
 MU_TEST_SUITE(test_suite)
@@ -95,6 +192,9 @@ MU_TEST_SUITE(test_suite)
 	MU_RUN_TEST(funtion_should_print_string);
 	MU_RUN_TEST(funtion_should_print_int);
 	MU_RUN_TEST(funtion_should_print_negative_int);
+	MU_RUN_TEST(funtion_should_print_zero);
+	MU_RUN_TEST(funtion_should_print_hexadecimal);
+	MU_RUN_TEST(funtion_should_print_negative_hexadecimal);
 }
 
 int	main(void)
