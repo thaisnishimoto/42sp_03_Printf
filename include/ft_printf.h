@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:34:34 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/15 12:27:28 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2023/06/18 00:20:22 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,9 @@
 # include "../libft/libft.h" //my libft
 
 int	ft_printf(const char *str, ...);
+int	ft_printlen(const char *str);
+int	ft_print_char(va_list args);
+int	ft_print_str(va_list args);
+int	ft_print_nbr(va_list args);
 
 #endif

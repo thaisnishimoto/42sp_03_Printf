@@ -5,36 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/13 15:11:48 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/15 18:46:13 by tmina-ni         ###   ########.fr       */
+/*   Created: 2023/06/18 00:23:34 by tmina-ni          #+#    #+#             */
+/*   Updated: 2023/06/18 00:23:45 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int	ft_printlen(const char *str)
-{
-	int	len;
-	int	i;
-
-	len = 0;
-	i = 0;
-	if (str[i] == '%')
-	{
-		i++;
-		if (str[i] == '%')
-		{
-			i++;
-			len++;
-		}
-	}
-	else
-	{
-		i++;
-		len++;
-	}
-	return (len);
-}
+//find %
+//check for flags
+//check specifier and return pointer to it
+//va_arg
 
 int	num_args(const char *str)
 {
@@ -63,33 +44,28 @@ int	num_args(const char *str)
 int	ft_printf(const char *str, ...)
 {
 	va_list	args;
-	int	i;
-	int	j;
-	int	count;
-	int	c;
+	int		i;
+	int		len;
 
 	i = 0;
-	j = 0;
-	count = num_args(str);
+	len = ft_printlen(str);
 	va_start(args, str);
 	while (str[i])
 	{
-		while (str[i] && str[i] != '%')
-		{
+		if (str[i] != '%')
 			write(1, &str[i], 1);
+		else if (str[i] == '%')
+		{		
 			i++;
+			if (str[i] == 'c')
+				len += ft_print_char(args);
+			else if (str[i] == 's')
+				len += ft_print_str(args);
+			else if (str[i] == 'd' || str[i] == 'i')
+				len += ft_print_nbr(args);
 		}
-		if (str[i] == '%')
-		{
-			i++;
-			if (str[i] == 'd')
-			{
-				c = va_arg(args, int);
-				write(1, &c, 1);
-				i++;
-			}
-		}
+		i++;
 	}
 	va_end(args);
-	return (0);
+	return (len);
 }

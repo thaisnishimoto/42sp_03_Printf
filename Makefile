@@ -6,7 +6,7 @@
 #    By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 15:42:20 by tmina-ni          #+#    #+#              #
-#    Updated: 2023/06/15 15:02:27 by tmina-ni         ###   ########.fr        #
+#    Updated: 2023/06/18 00:57:30 by tmina-ni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ $(NAME): $(OBJ)
 %.o: %.c $(HEADER_PATH)*.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-#object files depend on c files and header file
+#runs test
 main: all
 	$(MAKE_NO_PRINT) -C ./teste
 

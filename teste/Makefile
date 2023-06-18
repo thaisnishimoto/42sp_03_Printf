@@ -6,7 +6,7 @@
 #    By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 15:43:08 by tmina-ni          #+#    #+#              #
-#    Updated: 2023/06/15 14:56:35 by tmina-ni         ###   ########.fr        #
+#    Updated: 2023/06/18 02:17:28 by tmina-ni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRC = $(wildcard *.c)
 #-----------------RULES---------------------#
 
 all:
-	$(CC) -g3 $(CFLAGS) $(SRC) -o program -L$(LIBFT_PATH) -lft -L.. -lftprintf
+	$(CC) -g3 $(CFLAGS) $(SRC) -L.. -lftprintf -L$(LIBFT_PATH) -lft -o program
 #	$(CC) -g3 $(CFLAGS) $(SRC) ../src/*c -L.. -lftprintf -lrt -lm -o program
 	./program
 	$(MAKE_NO_PRINT) fclean
