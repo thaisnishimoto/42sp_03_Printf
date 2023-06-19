@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 00:23:34 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/18 00:23:45 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2023/06/19 00:51:27 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,19 @@ int	ft_printf(const char *str, ...)
 				len += ft_print_char(args);
 			else if (str[i] == 's')
 				len += ft_print_str(args);
+			else if (str[i] == 'p')
+				len += ft_print_ptr(args);
 			else if (str[i] == 'd' || str[i] == 'i')
 				len += ft_print_nbr(args);
-			else if (str[i] == 'x' || str[i] == 'X')
-				len += ft_printnbr_base16(args);
+			else if (str[i] == 'x')
+				len += ft_printnbr_base16_lower(args);
+			else if (str[i] == 'X')
+				len += ft_printnbr_base16_upper(args);
+			else if (str[i] == '%')
+			{
+				write(1, &str[i], 1);
+				len++;
+			}
 		}
 		i++;
 	}

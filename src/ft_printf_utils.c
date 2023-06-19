@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:11:48 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/18 16:01:49 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2023/06/19 01:18:29 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,20 @@ int	ft_print_str(va_list args)
 	return (len);
 }
 
+int	ft_print_ptr(va_list args)
+{
+	void	*ptr1;
+	void	**ptr2;
+	int		i;
+
+	i = 0;
+	ptr1 = va_arg(args, void*);
+	ptr2 = &ptr1;
+	while (ptr2[i])
+		write(1, &ptr2[i++], 1);
+	return (0);	
+}
+
 int	ft_print_nbr(va_list args)
 {
 	char	*num;
@@ -72,15 +86,40 @@ int	ft_print_nbr(va_list args)
 	return (len);
 }
 
-int	ft_printnbr_base16(va_list args)
+int	ft_printnbr_base16_lower(va_list args)
 {
 	char	*base;
 	char	num[100];
-	unsigned int		nbr;
+	unsigned int	nbr;
 	int		len;
 	int		i;
 
 	base = "0123456789abcdef";
+	nbr = va_arg(args, int);
+	if (nbr == 0)
+		write(1, "0", 1);
+	i = 0;
+	while (nbr > 0)
+	{
+		num[i++] = base[nbr % 16];
+		nbr = nbr / 16;
+	}
+	len = i;
+	while (--i >= 0)
+		write(1, &num[i], 1);
+	return (len);
+}
+
+
+int	ft_printnbr_base16_upper(va_list args)
+{
+	char	*base;
+	char	num[100];
+	unsigned int	nbr;
+	int		len;
+	int		i;
+
+	base = "0123456789ABCDEF";
 	nbr = va_arg(args, int);
 	if (nbr == 0)
 		write(1, "0", 1);

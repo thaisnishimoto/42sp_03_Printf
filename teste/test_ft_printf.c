@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:00:56 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/18 02:19:22 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2023/06/19 01:16:08 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,6 +186,41 @@ MU_TEST(funtion_should_print_negative_hexadecimal)
 	mu_assert_int_eq(expected2, result2);
 }
 
+MU_TEST(funtion_should_print_percent)
+{
+	int	result1;
+	int	expected1;
+
+	printf("\n-------------------------\n");
+	printf("TEST 8: print char %% 3x\n");
+	printf("-------------------------\n");
+	printf("*Expected\n");
+	expected1 = printf("%% %% %%\n");
+	printf("*Result ft_printf\n");
+	result1 = ft_printf("%% %% %%\n");
+	printf("\n");
+	
+	mu_assert_int_eq(expected1, result1);
+}
+
+MU_TEST(funtion_should_pointer_address)
+{
+	char	*ptr;
+	int	result1;
+	int	expected1;
+
+	ptr = "Hello";
+	printf("\n-------------------------\n");
+	printf("TEST 9: print pointer\n");
+	printf("-------------------------\n");
+	printf("*Expected\n");
+	expected1 = printf("%p\n", ptr);
+	printf("*Result ft_printf\n");
+	result1 = ft_printf("%p\n", ptr);
+	printf("\n");
+	
+	mu_assert_int_eq(expected1, result1);
+}
 MU_TEST_SUITE(test_suite)
 {
 	MU_RUN_TEST(funtion_should_print_letter_a);
@@ -195,6 +230,8 @@ MU_TEST_SUITE(test_suite)
 	MU_RUN_TEST(funtion_should_print_zero);
 	MU_RUN_TEST(funtion_should_print_hexadecimal);
 	MU_RUN_TEST(funtion_should_print_negative_hexadecimal);
+	MU_RUN_TEST(funtion_should_print_percent);
+	MU_RUN_TEST(funtion_should_pointer_address);
 }
 
 int	main(void)
