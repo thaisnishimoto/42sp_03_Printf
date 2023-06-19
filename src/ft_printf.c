@@ -6,40 +6,13 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 00:23:34 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/19 00:51:27 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2023/06/19 17:29:25 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-//find %
-//check for flags
-//check specifier and return pointer to it
-//va_arg
-
-int	num_args(const char *str)
-{
-	int	count;
-	int	i;
-
-	count = 0;
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '%')
-		{
-			i++;
-			if (str[i] != '%')
-			{
-				i++;
-				count++;
-			}
-		}
-		else
-			i++;
-	}
-	return (count);
-}
+static int	ft_print_format(const char *format, va_list args);
 
 int	ft_printf(const char *str, ...)
 {
@@ -57,26 +30,37 @@ int	ft_printf(const char *str, ...)
 		else if (str[i] == '%')
 		{		
 			i++;
-			if (str[i] == 'c')
-				len += ft_print_char(args);
-			else if (str[i] == 's')
-				len += ft_print_str(args);
-			else if (str[i] == 'p')
-				len += ft_print_ptr(args);
-			else if (str[i] == 'd' || str[i] == 'i')
-				len += ft_print_nbr(args);
-			else if (str[i] == 'x')
-				len += ft_printnbr_base16_lower(args);
-			else if (str[i] == 'X')
-				len += ft_printnbr_base16_upper(args);
-			else if (str[i] == '%')
-			{
-				write(1, &str[i], 1);
-				len++;
-			}
+			len += ft_print_format(&str[i], args);
 		}
 		i++;
 	}
 	va_end(args);
+	return (len);
+}
+
+static int	ft_print_format(const char *format, va_list args)
+{
+	int	len;
+
+	len = 0;
+	if (*format == 'c')
+		len += ft_print_char(args);
+	else if (*format == 's')
+		len += ft_print_str(args);
+	else if (*format == 'p')
+		len += ft_print_ptr(args);
+	else if (*format == 'd' || *format == 'i')
+		len += ft_print_nbr(args);
+	else if (*format == 'u')
+		len += ft_print_unsigned_nbr(args);
+	else if (*format == 'x')
+		len += ft_printnbr_base16(args, 'x');
+	else if (*format == 'X')
+		len += ft_printnbr_base16(args, 'X');
+	else if (*format == '%')
+	{
+		write(1, "%", 1);
+		len++;
+	}
 	return (len);
 }

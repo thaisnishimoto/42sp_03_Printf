@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:11:48 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/19 01:18:29 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2023/06/19 18:04:18 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,20 @@ int	ft_print_str(va_list args)
 
 int	ft_print_ptr(va_list args)
 {
-	void	*ptr1;
-	void	**ptr2;
-	int		i;
+	//uintptr_t	num;
+	unsigned long int	num;
+	char	*base;
+	int		len;
+	char	*address;
 
-	i = 0;
-	ptr1 = va_arg(args, void*);
-	ptr2 = &ptr1;
-	while (ptr2[i])
-		write(1, &ptr2[i++], 1);
-	return (0);	
+	len = 0;
+	base = "0123456789abcdef";
+	num = va_arg(args, unsigned long int);
+	address = ft_itoa_base(num, base);
+	while (address[len])
+		write(1, &address[len++], 1);
+	free (address);
+	return (len);	
 }
 
 int	ft_print_nbr(va_list args)
@@ -86,32 +90,22 @@ int	ft_print_nbr(va_list args)
 	return (len);
 }
 
-int	ft_printnbr_base16_lower(va_list args)
+int	ft_print_unsigned_nbr(va_list args)
 {
-	char	*base;
-	char	num[100];
-	unsigned int	nbr;
+	char	*num;
 	int		len;
-	int		i;
+	unsigned int	nbr;
 
-	base = "0123456789abcdef";
+	len = 0;
 	nbr = va_arg(args, int);
-	if (nbr == 0)
-		write(1, "0", 1);
-	i = 0;
-	while (nbr > 0)
-	{
-		num[i++] = base[nbr % 16];
-		nbr = nbr / 16;
-	}
-	len = i;
-	while (--i >= 0)
-		write(1, &num[i], 1);
+	num = ft_utoa(nbr);
+	while (num[len])
+		write(1, &num[len++], 1);
+	free (num);
 	return (len);
 }
 
-
-int	ft_printnbr_base16_upper(va_list args)
+int	ft_printnbr_base16(va_list args, char x_case)
 {
 	char	*base;
 	char	num[100];
@@ -119,7 +113,10 @@ int	ft_printnbr_base16_upper(va_list args)
 	int		len;
 	int		i;
 
-	base = "0123456789ABCDEF";
+	if (x_case == 'x')
+		base = "0123456789abcdef";
+	else
+		base = "0123456789ABCDEF";
 	nbr = va_arg(args, int);
 	if (nbr == 0)
 		write(1, "0", 1);

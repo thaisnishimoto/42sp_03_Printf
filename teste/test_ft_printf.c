@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:00:56 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/19 01:16:08 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2023/06/19 12:17:06 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ MU_TEST(funtion_should_print_int)
 	int	expected1;
 	int	result2;
 	int	expected2;
+	int	result3;
+	int	expected3;
 
 	num = 100;
 	printf("\n-------------------------\n");
@@ -76,6 +78,13 @@ MU_TEST(funtion_should_print_int)
 	result2 = ft_printf("%i\n", num);
 	printf("\n");
 	mu_assert_int_eq(expected2, result2);
+	
+	printf("*Expected %%u\n");
+	expected3 = printf("%u\n", num);
+	printf("*Result ft_printf\n");
+	result3 = ft_printf("%u\n", num);
+	printf("\n");
+	mu_assert_int_eq(expected3, result3);
 }
 
 MU_TEST(funtion_should_print_negative_int)
@@ -85,6 +94,8 @@ MU_TEST(funtion_should_print_negative_int)
 	int	expected1;
 	int	result2;
 	int	expected2;
+	int	result3;
+	int	expected3;
 
 	num = -42;
 	printf("\n-------------------------\n");
@@ -103,6 +114,12 @@ MU_TEST(funtion_should_print_negative_int)
 	result2 = ft_printf("%i\n", num);
 	printf("\n");
 	mu_assert_int_eq(expected2, result2);
+	
+	printf("*Expected %%u\n");
+	expected3 = printf("%u\n", num);
+	printf("*Result ft_printf\n");
+	result3 = ft_printf("%u\n", num);
+	printf("\n");
 }
 
 MU_TEST(funtion_should_print_zero)
@@ -112,6 +129,8 @@ MU_TEST(funtion_should_print_zero)
 	int	expected1;
 	int	result2;
 	int	expected2;
+	int	result3;
+	int	expected3;
 
 	num = 0;
 	printf("\n-------------------------\n");
@@ -130,6 +149,12 @@ MU_TEST(funtion_should_print_zero)
 	result2 = ft_printf("%i\n", num);
 	printf("\n");
 	mu_assert_int_eq(expected2, result2);
+	
+	printf("*Expected %%u\n");
+	expected3 = printf("%u\n", num);
+	printf("*Result ft_printf\n");
+	result3 = ft_printf("%u\n", num);
+	printf("\n");
 }
 
 MU_TEST(funtion_should_print_hexadecimal)

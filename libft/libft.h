@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:19:06 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/10 19:31:08 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2023/06/19 17:24:38 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 //new functions added
 char	*get_next_line(int fd);
+char	*ft_utoa(unsigned int n);
+char	*ft_itoa_base(unsigned long int n, char *base);
 
 #endif 
