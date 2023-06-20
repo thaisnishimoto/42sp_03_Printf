@@ -1,91 +1,64 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_utoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 15:38:28 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/19 18:03:23 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2023/06/20 18:06:42 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	check_base(char *base);
-char	*ft_reverse_str(char *str);
+static size_t	check_base(char *base);
+static char		*ft_reverse_str(char *str);
 
-//char	*ft_itoa_base(unsigned long int n, char *base)
-//{
-//	unsigned long	lnb;	
-//	size_t			blen;
-//	int		i;
-//	char			buffer[100];
-//	char		*num;
-//
-//	lnb = n;
-//	blen = check_base(base);
-//	if (blen < 2)
-//		return (NULL);
-//	i = 0;
-//	if (lnb == 0)
-//		buffer[i++] = '0';
-//	while (lnb > 0)
-//	{
-//		buffer[i] = base[lnb % blen];
-//		lnb = lnb / blen;
-//		i++;
-//	}
-//	while (--i >= 0)
-//		num = buffer[i]; 
-//	return (num);
-//}
-
-char	*ft_itoa_base(unsigned long int n, char *base)
+char	*ft_utoa_base(unsigned long lnb, char *base)
 {
-	unsigned long	lnb;	
-	size_t			blen;
+	size_t	blen;
 	int		i;
-	char		buffer[100];
-	char		*num;
+	char	buffer[100];
+	char	*num;
 
-//	buffer = NULL;
-	lnb = n;
 	blen = check_base(base);
 	if (blen < 2)
 		return (NULL);
 	i = 0;
 	if (lnb == 0)
-		buffer[i++] = '0';
+		buffer[i] = '0';
 	while (lnb > 0)
 	{
 		buffer[i] = base[lnb % blen];
 		lnb = lnb / blen;
 		i++;
 	}
-//	buffer[i] = '\0';
-	num = ft_reverse_str(buffer); 
+	buffer[i] = '\0';
+	num = ft_reverse_str(buffer);
 	return (num);
 }
 
-char	*ft_reverse_str(char *str)
+static char	*ft_reverse_str(char *str)
 {
-	int	len;
-	int	i;
+	int		len;
+	int		i;
 	char	*str_rev;
 
-	str_rev = NULL;
 	len = ft_strlen(str);
-	str_rev = malloc(len * sizeof(char));
+	str_rev = malloc((len + 1) * sizeof(char));
+	if (str_rev == NULL)
+		return (NULL);
 	i = 0;
-	while (len >= 0)
+	while (len > 0)
 	{
 		str_rev[--len] = str[i++];
 	}
+	str_rev[i] = '\0';
 	return (str_rev);
 }
 
-size_t	check_base(char *base)
+static size_t	check_base(char *base)
 {
 	size_t	blen;
 	int		i;

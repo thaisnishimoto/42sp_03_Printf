@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 00:23:34 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/19 17:29:25 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2023/06/20 13:40:54 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	ft_printf(const char *str, ...)
 	int		len;
 
 	i = 0;
+	if (str == NULL)
+		return (-1);
 	len = ft_printlen(str);
 	va_start(args, str);
 	while (str[i])

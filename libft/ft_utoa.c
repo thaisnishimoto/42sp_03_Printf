@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 15:38:28 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/19 12:49:46 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2023/06/20 18:08:02 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static size_t	ft_n_sign(unsigned long lnb);
 char	*ft_utoa(unsigned int n)
 {
 	unsigned long	lnb;	
-	size_t	sign;
-	size_t	len;
-	char	*num_chars;
+	size_t			sign;
+	size_t			len;
+	char			*num_chars;
 
 	lnb = n;
 	sign = ft_n_sign(lnb);

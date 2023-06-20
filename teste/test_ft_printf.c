@@ -6,13 +6,13 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:00:56 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/19 12:17:06 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2023/06/20 18:29:13 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minunit.h"
+#include "limits.h"
 #include "../include/ft_printf.h"
-#include "../libft/libft.h"
 
 MU_TEST(funtion_should_print_letter_a)
 {
@@ -228,7 +228,7 @@ MU_TEST(funtion_should_print_percent)
 	mu_assert_int_eq(expected1, result1);
 }
 
-MU_TEST(funtion_should_pointer_address)
+MU_TEST(funtion_should_print_pointer_address)
 {
 	char	*ptr;
 	int	result1;
@@ -246,6 +246,122 @@ MU_TEST(funtion_should_pointer_address)
 	
 	mu_assert_int_eq(expected1, result1);
 }
+
+MU_TEST(funtion_should_print_pointer_NULL)
+{
+	char	*ptr;
+	int	result1;
+	int	expected1;
+
+	ptr = NULL;
+	printf("\n-------------------------\n");
+	printf("TEST 10: print NULL pointer\n");
+	printf("-------------------------\n");
+	printf("*Expected\n");
+	expected1 = printf("%p\n", ptr);
+	printf("*Result ft_printf\n");
+	result1 = ft_printf("%p\n", ptr);
+	printf("\n");
+	
+	mu_assert_int_eq(expected1, result1);
+}
+
+MU_TEST(funtion_should_print_neg_1_for_format_NULL)
+{
+	int	result1;
+	int	expected1;
+
+	printf("\n-------------------------\n");
+	printf("TEST 11: print -1 for format null\n");
+	printf("-------------------------\n");
+	printf("*Expected\n");
+	expected1 = printf(0);
+	printf("*Result ft_printf\n");
+	result1 = ft_printf(0);
+	printf("\n");
+	
+	printf("Returned values: %d %d\n", expected1, result1);
+	mu_assert_int_eq(expected1, result1);
+}
+
+MU_TEST(funtion_should_print_multiple_strings)
+{
+	int	result1;
+	int	expected1;
+
+	printf("\n-------------------------\n");
+	printf("TEST 12: print multiple strings\n");
+	printf("-------------------------\n");
+	printf("*Expected\n");
+	expected1 = printf(" %s %s %s %s %s ", " - ", "", "4", "", "2 ");
+	printf("\n");
+	printf("*Result ft_printf\n");
+	result1 = ft_printf(" %s %s %s %s %s ", " - ", "", "4", "", "2 ");
+	printf("\n");
+	
+	mu_assert_int_eq(expected1, result1);
+}
+
+MU_TEST(funtion_should_print_NULL_string)
+{
+	char	*str;
+	int	result1;
+	int	expected1;
+
+	str = NULL;
+	printf("\n-------------------------\n");
+	printf("TEST 13: print NULL string\n");
+	printf("-------------------------\n");
+	printf("*Expected\n");
+	expected1 = printf("%s", str);
+	printf("\n");
+	printf("*Result ft_printf\n");
+	result1 = ft_printf("%s", str);
+	printf("\n");
+	
+	mu_assert_int_eq(expected1, result1);
+}
+
+MU_TEST(funtion_should_print_hexadecimal_long_min)
+{
+	int	num;
+	int	result1;
+	int	expected1;
+
+	num = -2147483647;
+	printf("\n-------------------------\n");
+	printf("TEST 14: print -2147483647 base 16\n");
+	printf("-------------------------\n");
+	printf("*Expected\n");
+	expected1 = printf("%x", num);
+	printf("\n");
+	printf("*Result ft_printf\n");
+	result1 = ft_printf("%x", num);
+	printf("\n");
+	
+	mu_assert_int_eq(expected1, result1);
+}
+
+MU_TEST(funtion_should_print_hexadecimal_zero)
+{
+	int	num;
+	int	result1;
+	int	expected1;
+
+	num = 0;
+	printf("\n-------------------------\n");
+	printf("TEST 15: print 0 base 16\n");
+	printf("-------------------------\n");
+	printf("*Expected\n");
+	expected1 = printf("%x", num);
+	printf("\n");
+	printf("*Result ft_printf\n");
+	result1 = ft_printf("%x", num);
+	printf("\n");
+	
+	mu_assert_int_eq(expected1, result1);
+}
+
 MU_TEST_SUITE(test_suite)
 {
 	MU_RUN_TEST(funtion_should_print_letter_a);
@@ -256,7 +372,13 @@ MU_TEST_SUITE(test_suite)
 	MU_RUN_TEST(funtion_should_print_hexadecimal);
 	MU_RUN_TEST(funtion_should_print_negative_hexadecimal);
 	MU_RUN_TEST(funtion_should_print_percent);
-	MU_RUN_TEST(funtion_should_pointer_address);
+	MU_RUN_TEST(funtion_should_print_pointer_address);
+	MU_RUN_TEST(funtion_should_print_pointer_NULL);
+	MU_RUN_TEST(funtion_should_print_neg_1_for_format_NULL);
+	MU_RUN_TEST(funtion_should_print_multiple_strings);
+	MU_RUN_TEST(funtion_should_print_NULL_string);
+	MU_RUN_TEST(funtion_should_print_hexadecimal_long_min);
+	MU_RUN_TEST(funtion_should_print_hexadecimal_zero);
 }
 
 int	main(void)

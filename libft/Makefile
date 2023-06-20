@@ -6,7 +6,7 @@
 #    By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 10:48:14 by tmina-ni          #+#    #+#              #
-#    Updated: 2023/06/19 17:18:48 by tmina-ni         ###   ########.fr        #
+#    Updated: 2023/06/20 13:28:39 by tmina-ni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ ft_strchr.c ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c \
 ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c \
 ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c \
 ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
-get_next_line.c ft_utoa.c ft_itoa_base.c
+get_next_line.c ft_utoa.c ft_utoa_base.c
 
 OBJS = $(SRCS:.c=.o)
 
