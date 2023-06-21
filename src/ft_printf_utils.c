@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:11:48 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/21 18:13:50 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2023/06/21 18:59:31 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,8 +129,12 @@ int	ft_printnbr_base16(va_list args, char *base, char *flag_buffer)
 		return (1);
 	}
 	len = 0;
-	while (flag_buffer[len])
-		write(1, &flag_buffer[len++], 1);
+	if (flag_buffer)
+	{
+		while (flag_buffer[len])
+			write(1, &flag_buffer[len++], 1);
+		free (flag_buffer);
+	}
 	i = 0;
 	num = ft_utoa_base(nbr, base);
 	while (num[i])
