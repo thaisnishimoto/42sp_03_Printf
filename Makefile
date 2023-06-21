@@ -6,7 +6,7 @@
 #    By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 15:42:20 by tmina-ni          #+#    #+#              #
-#    Updated: 2023/06/18 00:57:30 by tmina-ni         ###   ########.fr        #
+#    Updated: 2023/06/20 19:00:24 by tmina-ni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,8 @@ $(NAME): $(OBJ)
 #runs test
 main: all
 	$(MAKE_NO_PRINT) -C ./teste
+
+bonus: all
 
 clean:
 	rm -f $(SRC_PATH)*.o

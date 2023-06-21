@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:11:48 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/20 18:32:26 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2023/06/21 18:13:50 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,32 +115,27 @@ int	ft_print_unsigned_nbr(va_list args)
 	return (len);
 }
 
-int	ft_printnbr_base16(va_list args, char x_case)
+int	ft_printnbr_base16(va_list args, char *base, char *flag_buffer)
 {
-	char			*base;
-	char			num[100];
+	char			*num;
 	unsigned int	nbr;
 	int				len;
 	int				i;
 
-	if (x_case == 'x')
-		base = "0123456789abcdef";
-	else
-		base = "0123456789ABCDEF";
 	nbr = va_arg(args, int);
 	if (nbr == 0)
 	{
 		write(1, "0", 1);
 		return (1);
 	}
+	len = 0;
+	while (flag_buffer[len])
+		write(1, &flag_buffer[len++], 1);
 	i = 0;
-	while (nbr > 0)
-	{
-		num[i++] = base[nbr % 16];
-		nbr = nbr / 16;
-	}
-	len = i;
-	while (--i >= 0)
-		write(1, &num[i], 1);
+	num = ft_utoa_base(nbr, base);
+	while (num[i])
+		write(1, &num[i++], 1);
+	free (num);
+	len += i;
 	return (len);
 }

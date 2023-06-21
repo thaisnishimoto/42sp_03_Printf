@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:00:56 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/20 18:29:13 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2023/06/21 16:19:36 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -362,6 +362,67 @@ MU_TEST(funtion_should_print_hexadecimal_zero)
 	mu_assert_int_eq(expected1, result1);
 }
 
+MU_TEST(funtion_should_print_0x_before_hexadecimal)
+{
+	int	num;
+	int	result1;
+	int	expected1;
+
+	num = 100;
+	printf("\n-------------------------\n");
+	printf("TEST 16 - bonus: flag #\n");
+	printf("-------------------------\n");
+	printf("*Expected\n");
+	expected1 = printf("%#x | %#X", num, num);
+	printf("\n");
+	printf("*Result ft_printf\n");
+	result1 = ft_printf("%#x | %#X", num, num);
+	printf("\n");
+	
+	mu_assert_int_eq(expected1, result1);
+}
+
+MU_TEST(funtion_shouldnt_print_0x_before_hexadecimal_0)
+{
+	int	num;
+	int	result1;
+	int	expected1;
+
+	num = 0;
+	printf("\n-------------------------\n");
+	printf("TEST 17 - bonus: flag #\n");
+	printf("-------------------------\n");
+	printf("*Expected\n");
+	expected1 = printf("%#x | %#X", num, num);
+	printf("\n");
+	printf("*Result ft_printf\n");
+	result1 = ft_printf("%#x | %#X", num, num);
+	printf("\n");
+	
+	mu_assert_int_eq(expected1, result1);
+}
+//MU_TEST(funtion_should_print_space_before_positive_int)
+//{
+//	int	num;
+//	int	n_num;
+//	int	result1;
+//	int	expected1;
+//
+//	num = 42;
+//	n_num = -42;
+//	printf("\n-------------------------\n");
+//	printf("TEST 17 - bonus: flag space\n");
+//	printf("-------------------------\n");
+//	printf("*Expected\n");
+//	expected1 = printf("% d | % d", num, n_num);
+//	printf("\n");
+//	printf("*Result ft_printf\n");
+//	result1 = ft_printf("% d | % d", num, n_num);
+//	printf("\n");
+//	
+//	mu_assert_int_eq(expected1, result1);
+//}
+
 MU_TEST_SUITE(test_suite)
 {
 	MU_RUN_TEST(funtion_should_print_letter_a);
@@ -379,6 +440,8 @@ MU_TEST_SUITE(test_suite)
 	MU_RUN_TEST(funtion_should_print_NULL_string);
 	MU_RUN_TEST(funtion_should_print_hexadecimal_long_min);
 	MU_RUN_TEST(funtion_should_print_hexadecimal_zero);
+	MU_RUN_TEST(funtion_should_print_0x_before_hexadecimal);
+	MU_RUN_TEST(funtion_shouldnt_print_0x_before_hexadecimal_0);
 }
 
 int	main(void)
