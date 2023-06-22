@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:34:34 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/21 16:35:12 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2023/06/22 16:56:19 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,16 @@
 #  define UPP_HEXBASE "0123456789ABCDEF"
 # endif
 
-int	ft_printf(const char *str, ...);
-int	ft_printlen(const char *str);
-int	ft_print_char(va_list args);
-int	ft_print_str(va_list args);
-int	ft_print_nbr(va_list args);
-int	ft_print_unsigned_nbr(va_list args);
-int	ft_printnbr_base16(va_list args, char *base, char *flag_buffer);
-int	ft_print_ptr(va_list args);
+int		ft_printf(const char *str, ...);
+int		ft_printlen(const char *str);
+int		ft_print_char(va_list args);
+int		ft_print_str(va_list args);
+int		ft_print_nbr(va_list args, const char format, char *flag_buffer);
+int		ft_printnbr_base16(va_list args, char *base, char *flag_buffer);
+int		ft_print_ptr(va_list args);
+
+//bonus flags
+int		ft_check_flags(const char *format);
+char	*ft_get_flag(const char *format);
 
 #endif

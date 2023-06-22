@@ -6,7 +6,7 @@
 #    By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 15:42:20 by tmina-ni          #+#    #+#              #
-#    Updated: 2023/06/20 19:00:24 by tmina-ni         ###   ########.fr        #
+#    Updated: 2023/06/22 17:14:26 by tmina-ni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,4 +64,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all libft clean fclean re
+.PHONY: all libft bonus clean fclean re

@@ -6,34 +6,11 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:11:48 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/21 18:59:31 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2023/06/22 17:25:18 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
-
-int	ft_printlen(const char *str)
-{
-	int	len;
-	int	i;
-
-	len = 0;
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '%')
-		{
-			i++;
-			i++;
-		}
-		else
-		{
-			i++;
-			len++;
-		}
-	}
-	return (len);
-}
 
 int	ft_print_char(va_list args)
 {
@@ -85,33 +62,32 @@ int	ft_print_ptr(va_list args)
 	return (len + 2);
 }
 
-int	ft_print_nbr(va_list args)
+int	ft_print_nbr(va_list args, const char format, char *flag_buffer)
 {
 	char	*num;
 	int		len;
+	int		i;
 	int		nbr;
 
 	len = 0;
+	i = 0;
+	num = NULL;
 	nbr = va_arg(args, int);
-	num = ft_itoa(nbr);
-	while (num[len])
-		write(1, &num[len++], 1);
+	if (format == 'd' || format == 'i')
+	{
+		if (flag_buffer && nbr >= 0)
+		{
+			while (flag_buffer[len])
+				write(1, &flag_buffer[len++], 1);
+		}
+		num = ft_itoa(nbr);
+	}
+	else if (format == 'u')
+		num = ft_utoa(nbr);
+	while (num[i])
+		write(1, &num[i++], 1);
 	free(num);
-	return (len);
-}
-
-int	ft_print_unsigned_nbr(va_list args)
-{
-	char			*num;
-	int				len;
-	unsigned int	nbr;
-
-	len = 0;
-	nbr = va_arg(args, int);
-	num = ft_utoa(nbr);
-	while (num[len])
-		write(1, &num[len++], 1);
-	free (num);
+	len += i;
 	return (len);
 }
 
@@ -133,7 +109,6 @@ int	ft_printnbr_base16(va_list args, char *base, char *flag_buffer)
 	{
 		while (flag_buffer[len])
 			write(1, &flag_buffer[len++], 1);
-		free (flag_buffer);
 	}
 	i = 0;
 	num = ft_utoa_base(nbr, base);
