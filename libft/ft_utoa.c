@@ -6,27 +6,22 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 15:38:28 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/20 18:08:02 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2023/06/23 19:16:39 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 static size_t	ft_n_len(unsigned long lnb);
-static size_t	ft_n_sign(unsigned long lnb);
 
 char	*ft_utoa(unsigned int n)
 {
 	unsigned long	lnb;	
-	size_t			sign;
 	size_t			len;
 	char			*num_chars;
 
 	lnb = n;
-	sign = ft_n_sign(lnb);
-	if (sign == 1)
-		lnb = -lnb;
-	len = ft_n_len(lnb) + sign;
+	len = ft_n_len(lnb);
 	num_chars = malloc((len + 1) * sizeof(char));
 	if (num_chars == NULL)
 		return (NULL);
@@ -38,19 +33,7 @@ char	*ft_utoa(unsigned int n)
 		num_chars[len--] = (lnb % 10) + '0';
 		lnb = lnb / 10;
 	}
-	if (sign == 1)
-		num_chars[len] = '-';
 	return (num_chars);
-}
-
-static size_t	ft_n_sign(unsigned long lnb)
-{
-	size_t	sign;
-
-	sign = 0;
-	if (lnb < 0)
-		sign = 1;
-	return (sign);
 }
 
 static size_t	ft_n_len(unsigned long lnb)
