@@ -6,7 +6,7 @@
 #    By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 15:42:20 by tmina-ni          #+#    #+#              #
-#    Updated: 2023/06/23 13:25:51 by tmina-ni         ###   ########.fr        #
+#    Updated: 2023/06/23 15:36:10 by tmina-ni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ bonus: all
 
 leak:
 	$(MAKE_NO_PRINT) leak -C ./teste
+	cd ./teste && $(MAKE_NO_PRINT) fclean
 
 clean:
 	rm -f $(SRC_PATH)*.o
@@ -64,7 +65,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	cd $(LIBFT_PATH) && $(MAKE_NO_PRINT) fclean
-	cd ./teste && $(MAKE_NO_PRINT) fclean
 
 re: fclean all
 
