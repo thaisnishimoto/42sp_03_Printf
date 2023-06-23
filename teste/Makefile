@@ -6,7 +6,7 @@
 #    By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 15:43:08 by tmina-ni          #+#    #+#              #
-#    Updated: 2023/06/18 02:17:28 by tmina-ni         ###   ########.fr        #
+#    Updated: 2023/06/23 13:21:40 by tmina-ni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,12 +26,10 @@ SRC = $(wildcard *.c)
 
 all:
 	$(CC) -g3 $(CFLAGS) $(SRC) -L.. -lftprintf -L$(LIBFT_PATH) -lft -o program
-#	$(CC) -g3 $(CFLAGS) $(SRC) ../src/*c -L.. -lftprintf -lrt -lm -o program
 	./program
-	$(MAKE_NO_PRINT) fclean
 
-valgrind: all
-	valgrind --leak-check=full --show-leak-kinds=all ./program
+leak: all
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --error-exitcode=42 ./program
 
 clean:
 	rm -f *.o

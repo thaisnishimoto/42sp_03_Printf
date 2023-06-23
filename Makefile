@@ -6,7 +6,7 @@
 #    By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 15:42:20 by tmina-ni          #+#    #+#              #
-#    Updated: 2023/06/22 17:14:26 by tmina-ni         ###   ########.fr        #
+#    Updated: 2023/06/23 13:25:51 by tmina-ni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,9 @@ main: all
 
 bonus: all
 
+leak:
+	$(MAKE_NO_PRINT) leak -C ./teste
+
 clean:
 	rm -f $(SRC_PATH)*.o
 	cd $(LIBFT_PATH) && $(MAKE_NO_PRINT) clean
@@ -61,7 +64,8 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	cd $(LIBFT_PATH) && $(MAKE_NO_PRINT) fclean
+	cd ./teste && $(MAKE_NO_PRINT) fclean
 
 re: fclean all
 
-.PHONY: all libft bonus clean fclean re
+.PHONY: all libft bonus leak clean fclean re
