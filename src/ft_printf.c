@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 00:23:34 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/22 17:25:59 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2023/06/23 13:09:53 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,7 @@ static int	ft_print_format(const char *format, va_list args, char *flag_buff)
 		len += ft_print_str(args);
 	else if (*format == 'p')
 		len += ft_print_ptr(args);
-	else if (*format == 'd' || *format == 'i')
-		len += ft_print_nbr(args, *format, flag_buff);
-	else if (*format == 'u')
+	else if (*format == 'd' || *format == 'i' || *format == 'u')
 		len += ft_print_nbr(args, *format, flag_buff);
 	else if (*format == 'x')
 		len += ft_printnbr_base16(args, LOW_HEXBASE, flag_buff);
