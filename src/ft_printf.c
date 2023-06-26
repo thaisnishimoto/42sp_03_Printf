@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 00:23:34 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/23 20:46:11 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2023/06/26 15:49:55 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,10 @@ static int	ft_print_format(const char *format, va_list args, char *flag_buff)
 //	
 //	num = 0;
 //	printf("*Expected\n");
-//	expected1 = printf("%u %u", num, -10);
+//	expected1 = printf("%u %x", num, num);
 //	printf("\n");
 //	printf("*Result ft_printf\n");
-//	result1 = ft_printf("%u %u", num, -10);
+//	result1 = ft_printf("%u %x", num, num);
 //	printf("\n");
 //	return (0);
 //}

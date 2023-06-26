@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 15:38:28 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/20 18:06:42 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2023/06/26 15:48:25 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_utoa_base(unsigned long lnb, char *base)
 		return (NULL);
 	i = 0;
 	if (lnb == 0)
-		buffer[i] = '0';
+		buffer[i++] = '0';
 	while (lnb > 0)
 	{
 		buffer[i] = base[lnb % blen];
