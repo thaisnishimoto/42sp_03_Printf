@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:00:56 by tmina-ni          #+#    #+#             */
-/*   Updated: 2023/06/23 13:04:45 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2023/06/26 15:23:43 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ MU_TEST(funtion_should_print_negative_int)
 	printf("*Result ft_printf\n");
 	result3 = ft_printf("%u\n", num);
 	printf("\n");
+	mu_assert_int_eq(expected3, result3);
 }
 
 MU_TEST(funtion_should_print_zero)
@@ -155,6 +156,7 @@ MU_TEST(funtion_should_print_zero)
 	printf("*Result ft_printf\n");
 	result3 = ft_printf("%u\n", num);
 	printf("\n");
+	mu_assert_int_eq(expected3, result3);
 }
 
 MU_TEST(funtion_should_print_hexadecimal)
@@ -526,26 +528,6 @@ MU_TEST(funtion_should_print_space_before_zero)
 	mu_assert_int_eq(expected2, result2);
 }
 
-MU_TEST(funtion_should_print_space_before_string)
-{
-	char	*str;
-	int	result1;
-//	int	expected1;
-
-	str = "Hello";
-	printf("\n-------------------------\n");
-	printf("TEST 22 - bonus: flag space\n");
-	printf("-------------------------\n");
-//	printf("*Expected %%s\n");
-//	expected1 = printf("% s", str);
-//	printf("\n");
-	printf("*Result ft_printf %%d\n");
-	result1 = ft_printf("% s", str);
-	printf("\n");
-
-//	mu_assert_int_eq(expected1, result1);
-}
-
 MU_TEST_SUITE(test_suite)
 {
 	MU_RUN_TEST(funtion_should_print_letter_a);
@@ -569,7 +551,6 @@ MU_TEST_SUITE(test_suite)
 	MU_RUN_TEST(funtion_should_print_sign_before_zero);
 	MU_RUN_TEST(funtion_should_print_space_before_positive_nbr);
 	MU_RUN_TEST(funtion_should_print_space_before_zero);
-	MU_RUN_TEST(funtion_should_print_space_before_string);
 }
 
 int	main(void)
